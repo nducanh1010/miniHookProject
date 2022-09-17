@@ -1,13 +1,19 @@
 import { useEffect, useState } from "react";
 import useFetch from "../customize/fetch";
+import moment from "moment";
 
 const Covid = () => {
+  const today = moment().startOf("day").toISOString(true);
+  const priorDate = moment()
+    .startOf("day")
+    .subtract(31, "days")
+    .toISOString(true);
   const {
     data: dataCovid,
     loading,
     isError,
   } = useFetch(
-    "https://api.covid19api.com/country/vietnam?from=2022-03-22T00:00:00Z&to=2022-04-22T00:00:00Z"
+    `https://api.covid19api.com/country/vietnam?from=${priorDate}&to=${today}`
   );
   //   funtion <=> ComponentDidMount
 
