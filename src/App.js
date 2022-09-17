@@ -4,6 +4,14 @@ import Nav from "./views/Nav";
 import { useState } from "react";
 import Todos from "./views/Todos";
 import Covid from "./views/Covid";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useRouteMatch,
+  useParams,
+} from "react-router-dom";
 
 const App = () => {
   let [name] = useState("Mah self");
@@ -37,32 +45,40 @@ const App = () => {
     console.log(">> check log", event.target.value);
   };
   return (
-    <div className="App">
-      <header className="App-header">
-        <Nav />
-        <img src={logo} className="App-logo" alt="logo" />
-        <h2>Hello World React Hook and {name}!</h2>
-        {/* <Todos
-          myData={todos}
-          title={"All todos"}
-          deleteDataTodo={deleteDataTodo}
-        />
-        <Todos
-          myData={todos.filter((x) => x.type === "user_2")}
-          title={"user_2"}
-          deleteDataTodo={deleteDataTodo}
-        />
-        <input
-          type="text"
-          value={address}
-          onChange={(event) => handleOnChangeInput(event)}
-        />
-        <button type="button" onClick={(event) => handleEventClick(event)}>
-          Click
-        </button> */}
-        <Covid />
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <header className="App-header">
+          <Nav />
+          <img src={logo} className="App-logo" alt="logo" />
+          <h2>Hello World React Hook and {name}!</h2>
+
+          {/*  */}
+        </header>
+        <Switch>
+          <Route path="/" exact>
+            <Covid />
+          </Route>
+          <Route path="/users">{/* <Users /> */}</Route>
+          <Route path="/todo">
+            {/* <Home /> */}
+            <Todos
+              myData={todos}
+              title={"All todos"}
+              deleteDataTodo={deleteDataTodo}
+            />
+
+            <input
+              type="text"
+              value={address}
+              onChange={(event) => handleOnChangeInput(event)}
+            />
+            <button type="button" onClick={(event) => handleEventClick(event)}>
+              Click
+            </button>
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 };
 
