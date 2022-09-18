@@ -12,6 +12,9 @@ import {
   useRouteMatch,
   useParams,
 } from "react-router-dom";
+import { CountDown, NewCountDown } from "./views/Countdown";
+import Blog from "./views/Blog";
+import DetailBlog from "./views/BlogDetail";
 
 const App = () => {
   let [name] = useState("Mah self");
@@ -23,6 +26,9 @@ const App = () => {
     { id: "todo 4", title: "go to work", type: "user_2" },
     { id: "todo 5", title: "workouts", type: "user_2" },
   ]);
+  const onTimesup = () => {
+    alert("times up");
+  };
   const deleteDataTodo = (idDelete) => {
     let currentTodos = todos;
     currentTodos = currentTodos.filter((item) => item.id !== idDelete);
@@ -58,7 +64,11 @@ const App = () => {
           <Route path="/" exact>
             <Covid />
           </Route>
-          <Route path="/users">{/* <Users /> */}</Route>
+          <Route path="/timer">
+            <CountDown onTimesup={onTimesup} />
+            <div>--------------</div>
+            <NewCountDown onTimesup={onTimesup} />
+          </Route>
           <Route path="/todo">
             {/* <Home /> */}
             <Todos
@@ -75,6 +85,12 @@ const App = () => {
             <button type="button" onClick={(event) => handleEventClick(event)}>
               Click
             </button>
+          </Route>
+          <Route path="/blog" exact>
+            <Blog />
+          </Route>
+          <Route path="/blog/:id">
+            <DetailBlog />
           </Route>
         </Switch>
       </div>

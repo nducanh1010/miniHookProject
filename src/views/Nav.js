@@ -1,5 +1,5 @@
 import "./Nav.scss";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 const Nav = () => {
   return (
     <div className="topnav">
@@ -8,6 +8,7 @@ const Nav = () => {
       </NavLink>
       <NavLink to="/timer">Timer App</NavLink>
       <NavLink to="/todo">Todo App</NavLink>
+      <NavLink to="/blog">Blog App</NavLink>
       <NavLink to="/more">More</NavLink>
     </div>
   );

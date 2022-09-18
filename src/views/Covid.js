@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import useFetch from "../customize/fetch";
 import moment from "moment";
 
@@ -13,7 +13,8 @@ const Covid = () => {
     loading,
     isError,
   } = useFetch(
-    `https://api.covid19api.com/country/vietnam?from=${priorDate}&to=${today}`
+    `https://api.covid19api.com/country/vietnam?from=${priorDate}&to=${today}`,
+    true
   );
   //   funtion <=> ComponentDidMount
 
