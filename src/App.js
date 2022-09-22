@@ -8,13 +8,15 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link,
-  useRouteMatch,
-  useParams,
+  // Link,
+  // useRouteMatch,
+  // useParams,
 } from "react-router-dom";
 import { CountDown, NewCountDown } from "./views/Countdown";
 import Blog from "./views/Blog";
 import DetailBlog from "./views/BlogDetail";
+import AddNewBlog from "./views/AddNewBlog";
+import NotFound from "./views/NotFound";
 
 const App = () => {
   let [name] = useState("Mah self");
@@ -91,6 +93,12 @@ const App = () => {
           </Route>
           <Route path="/blog/:id">
             <DetailBlog />
+          </Route>
+          <Route path="/add-new-blog">
+            <AddNewBlog />
+          </Route>
+          <Route path="*">
+            <NotFound />
           </Route>
         </Switch>
       </div>
