@@ -17,6 +17,7 @@ import Blog from "./views/Blog";
 import DetailBlog from "./views/BlogDetail";
 import AddNewBlog from "./views/AddNewBlog";
 import NotFound from "./views/NotFound";
+import YoutubeSearch from "./views/YoutubeSearch";
 
 const App = () => {
   let [name] = useState("Mah self");
@@ -87,6 +88,9 @@ const App = () => {
             <button type="button" onClick={(event) => handleEventClick(event)}>
               Click
             </button>
+          </Route>
+          <Route path="/more">
+            <YoutubeSearch />
           </Route>
           <Route path="/blog" exact>
             <Blog />
